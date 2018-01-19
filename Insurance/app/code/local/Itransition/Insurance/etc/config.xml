@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Itransition_Insurance>
+            <version>0.1.0</version>
+        </Itransition_Insurance>
+    </modules>
+    <global>
+        <helpers>
+            <insurance>
+                <class>Itransition_Insurance_Helper</class>
+            </insurance>
+        </helpers>
+    </global>
+    <frontend>
+
+    </frontend>
+    <default>
+        <insurance>
+            <settings>
+                <enabled>1</enabled>
+            </settings>
+        </insurance>
+    </default>
+</config>
