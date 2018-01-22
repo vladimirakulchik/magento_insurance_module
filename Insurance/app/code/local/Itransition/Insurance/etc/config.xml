@@ -11,6 +11,15 @@
                 <class>Itransition_Insurance_Helper</class>
             </insurance>
         </helpers>
+        <models>
+            <insurance>
+                <class>Itransition_Insurance_Model</class>
+                <resourceModel>insurance_resource</resourceModel>
+            </insurance>
+            <insurance_resource>
+                <class>Itransition_Insurance_Model_Resource</class>
+            </insurance_resource>
+        </models>
     </global>
     <frontend>
 
@@ -20,6 +29,46 @@
             <settings>
                 <enabled>1</enabled>
             </settings>
+            <flatrate>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </flatrate>
+            <tablerates>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </tablerates>
+            <freeshipping>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </freeshipping>
+            <ups>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </ups>
+            <usps>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </usps>
+            <fedex>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </fedex>
+            <dhldeprecated>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </dhldeprecated>
+            <dhl>
+                <enabled>1</enabled>
+                <type>0</type>
+                <value>1</value>
+            </dhl>
         </insurance>
     </default>
 </config>
