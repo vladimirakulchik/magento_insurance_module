@@ -6,6 +6,11 @@
         </Itransition_Insurance>
     </modules>
     <global>
+        <blocks>
+            <insurance>
+                <class>Itransition_Insurance_Block</class>
+            </insurance>
+        </blocks>
         <helpers>
             <insurance>
                 <class>Itransition_Insurance_Helper</class>
@@ -22,7 +27,22 @@
         </models>
     </global>
     <frontend>
-
+        <layout>
+            <updates>
+                <insurance module="insurance">
+                    <file>checkbox.xml</file>
+                </insurance>
+            </updates>
+        </layout>
+        <routers>
+            <insurance>
+                <use>standard</use>
+                <args>
+                    <module>Itransition_Insurance</module>
+                    <frontName>insurance</frontName>
+                </args>
+            </insurance>
+        </routers>
     </frontend>
     <default>
         <insurance>
