@@ -4,18 +4,26 @@ class Itransition_Insurance_Block_Checkbox extends Mage_Core_Block_Template
 {
     public function isModuleEnable()
     {
-        $moduleEnabled = Mage::getStoreConfigFlag('insurance/settings/enabled');
-        return $moduleEnabled;
+        return Mage::helper('insurance')->isInsuranceModuleEnable();
     }
 
     public function getShippingMethods()
     {
-        $methods = Mage::getSingleton('shipping/config')->getActiveCarriers();
+        $helper = Mage::helper('insurance');
         $shipMethods = array();
-        foreach ($methods as $shippingCode => $shippingModel)
-        {
-            $shipMethods[] = $shippingCode;
+        $methods = Mage::getSingleton('shipping/config')->getActiveCarriers();
+        foreach ($methods as $shippingCode => $shippingModel) {
+            if ($helper->isShippingMethodEnable($shippingCode)) {
+                $shipMethods[] = $shippingCode;
+            }
         }
         return $shipMethods;
+    }
+
+    public function getInsuranceCost($method)
+    {
+        $helper = Mage::helper('insurance');
+        $subtotal = $helper->getSubtotal();
+        return $helper->getInsuranceCost($method, $subtotal);
     }
 }

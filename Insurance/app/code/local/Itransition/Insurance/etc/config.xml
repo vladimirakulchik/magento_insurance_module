@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Itransition_Insurance>
-            <version>0.1.0</version>
+            <version>1.0.0</version>
         </Itransition_Insurance>
     </modules>
     <global>
@@ -25,6 +25,13 @@
                 <class>Itransition_Insurance_Model_Resource</class>
             </insurance_resource>
         </models>
+        <resources>
+            <insurance_setup>
+                <setup>
+                    <module>Itransition_Insurance</module>
+                </setup>
+            </insurance_setup>
+        </resources>
     </global>
     <frontend>
         <layout>
@@ -34,15 +41,7 @@
                 </insurance>
             </updates>
         </layout>
-        <routers>
-            <insurance>
-                <use>standard</use>
-                <args>
-                    <module>Itransition_Insurance</module>
-                    <frontName>insurance</frontName>
-                </args>
-            </insurance>
-        </routers>
+
     </frontend>
     <default>
         <insurance>

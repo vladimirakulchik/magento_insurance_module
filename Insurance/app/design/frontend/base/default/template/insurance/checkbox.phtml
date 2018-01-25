@@ -1,10 +1,12 @@
 <?php if($this->isModuleEnable()): ?>
-    <?php $methods = $this->getShippingMethods() ?>
+    <?php $methods = $this->getShippingMethods(); ?>
     <?php foreach ($methods as $method): ?>
         <div id="<?php echo $method; ?>" hidden="hidden">
             <input type="checkbox" name="insurance" id="add_insurance" value="enabled" class="checkbox">
             <label for="add_insurance">Add insurance</label>
-            <p>COST</p>
+            <p>COST:
+            <?php echo $this->getInsuranceCost($method); ?>
+            </p>
         </div>
     <?php endforeach; ?>
 <?php endif; ?>
