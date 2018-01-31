@@ -8,6 +8,7 @@ class Itransition_Insurance_Block_Adminhtml_Order_Totals extends Mage_Sales_Bloc
     {
         parent::_initTotals();
         Mage::helper('insurance')->addInsuranceToTotals($this);
+
         return $this;
     }
 }

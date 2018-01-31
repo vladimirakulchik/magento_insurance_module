@@ -8,6 +8,7 @@ class Itransition_Insurance_Block_Order_Creditmemo_Totals extends Mage_Sales_Blo
     {
         parent::_initTotals();
         Mage::helper('insurance')->addInsuranceToTotals($this);
+
         return $this;
     }
 }

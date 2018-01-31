@@ -7,10 +7,12 @@ class Itransition_Insurance_Model_Sales_Order_Creditmemo_Total_Insurance extends
         $order = $creditmemo->getOrder();
         $helper = Mage::helper('insurance');
         $insurance = $order->getInsurance();
+
         if ($helper->isAddInsurance($insurance)) {
             $creditmemo->setGrandTotal($creditmemo->getGrandTotal() + $insurance);
             $creditmemo->setBaseGrandTotal($creditmemo->getBaseGrandTotal() + $insurance);
         }
+
         return $this;
     }
 }

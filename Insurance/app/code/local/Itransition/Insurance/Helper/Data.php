@@ -2,42 +2,38 @@
 
 class Itransition_Insurance_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    const INSURANCE_MODULE_ENABLED = 'insurance/settings/enabled';
-    const MODULE_CONFIG = 'insurance/';
-    const ENABLED = '/enabled';
-    const VALUE = '/value';
-    const TYPE = '/type';
-    const ENABLE = '1';
-    const DISABLE = '0';
-    const PERCENT = 100;
+    const CONF_PATH_ENABLED = 'insurance/settings/enabled';
+    const CONF_PATH_MODULE = 'insurance/';
+    const CONF_PATH_INSURANCE_ENABLED = '/enabled';
+    const CONF_PATH_INSURANCE_VALUE = '/value';
+    const CONF_PATH_INSURANCE_TYPE = '/type';
+    const ENABLED = '1';
+    const DISABLED = '0';
     const INSURANCE_LABEL = 'Insurance';
 
     public function isInsuranceModuleEnable()
     {
-        $state = Mage::getStoreConfig(self::INSURANCE_MODULE_ENABLED);
-        return $state === self::ENABLE;
+        return Mage::getStoreConfig(self::CONF_PATH_ENABLED) === self::ENABLED;
     }
 
     public function isShippingMethodEnable($method)
     {
-        $state = Mage::getStoreConfig(self::MODULE_CONFIG . $method . self::ENABLED);
-        return $state === self::ENABLE;
+        return Mage::getStoreConfig(self::CONF_PATH_MODULE . $method . self::CONF_PATH_INSURANCE_ENABLED) === self::ENABLED;
     }
 
     public function getTypeOfInsurance($method)
     {
-        return Mage::getStoreConfig(self::MODULE_CONFIG . $method . self::TYPE);
+        return Mage::getStoreConfig(self::CONF_PATH_MODULE . $method . self::CONF_PATH_INSURANCE_TYPE);
     }
 
     public function getValueOfInsurance($method)
     {
-        return Mage::getStoreConfig(self::MODULE_CONFIG . $method . self::VALUE);
+        return Mage::getStoreConfig(self::CONF_PATH_MODULE . $method . self::CONF_PATH_INSURANCE_VALUE);
     }
 
     public function getSubtotal()
     {
-        $subtotal = Mage::getModel('checkout/session')->getQuote()->getSubtotal();
-        return (double)$subtotal;
+        return (double)Mage::getModel('checkout/session')->getQuote()->getSubtotal();
     }
 
     public function getInsuranceCost($method, $subtotal)
@@ -45,14 +41,16 @@ class Itransition_Insurance_Helper_Data extends Mage_Core_Helper_Abstract
         $insuranceTypeModel = Mage::getModel('insurance/source_type');
         $value = $this->getValueOfInsurance($method);
         $type = $this->getTypeOfInsurance($method);
+
         switch ($type) {
             case $insuranceTypeModel::ABSOLUTE_TYPE:
                 $insuranceCost = (double)$value;
                 break;
             case $insuranceTypeModel::PERCENT_TYPE:
-                $insuranceCost = $subtotal * $value / self::PERCENT;
+                $insuranceCost = $subtotal * $value / 100;
                 break;
         }
+
         return $insuranceCost;
     }
 
@@ -69,12 +67,13 @@ class Itransition_Insurance_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function isAddInsurance($insurance)
     {
-        return $insurance != null;
+        return $insurance !== null;
     }
 
     public function addInsuranceToTotals($block)
     {
         $insurance = $block->getOrder()->getInsurance();
+
         if ($this->isAddInsurance($insurance)) {
             $block->addTotal(new Varien_Object(array(
                 'code' => $block->getCode(),

@@ -6,8 +6,8 @@ class Itransition_Insurance_Model_Sales_Order_Pdf_Total_Insurance extends Mage_S
     {
         $result = array();
         $insurance = $this->getOrder()->getInsurance();
-
         $helper = Mage::helper('insurance');
+
         if ($helper->isAddInsurance($insurance)) {
             $result[] = array(
               'amount' => sprintf('%.2f', $insurance),
@@ -15,6 +15,7 @@ class Itransition_Insurance_Model_Sales_Order_Pdf_Total_Insurance extends Mage_S
               'font_size' => $this->getFontSize()
             );
         }
+
         return $result;
     }
 }

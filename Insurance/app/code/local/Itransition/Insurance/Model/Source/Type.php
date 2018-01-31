@@ -2,8 +2,8 @@
 
 class Itransition_Insurance_Model_Source_Type
 {
-    const ABSOLUTE_TYPE = 0;
-    const PERCENT_TYPE = 1;
+    const ABSOLUTE_TYPE = 1;
+    const PERCENT_TYPE = 2;
     const ABSOLUTE_TYPE_LABEL = 'Absolute value';
     const PERCENT_TYPE_LABEL = 'Percent from order cost';
 
