@@ -88,4 +88,11 @@ class Itransition_Insurance_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return explode('_', $method)[0];
     }
+
+    public function getShippingMethod($quote)
+    {
+        $method = $quote->getShippingAddress()->getShippingMethod();
+
+        return $this->getCorrectMethodName($method);
+    }
 }
