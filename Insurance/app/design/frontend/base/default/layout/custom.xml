@@ -1,0 +1,55 @@
+<layout version="0.1.0">
+    <checkout_onepage_index>
+        <reference name="checkout.onepage">
+            <action method="setTemplate">
+                <template>custom/checkout/onepage.phtml</template>
+            </action>
+            <block type="insurance/checkout_onepage_customstep"
+                   name="checkout.onepage.customstep" as="customstep"
+                   template="custom/checkout/onepage/customstep.phtml">
+                <block type="insurance/checkout_onepage_customstep"
+                       name="checkout.onepage.customstep.info" as="customstep.info"
+                       template="custom/checkout/onepage/customstep/info.phtml"/>
+            </block>
+        </reference>
+        <reference name='checkout.progress'>
+            <action method='setTemplate'>
+                <template>custom/checkout/onepage/progress.phtml</template>
+            </action>
+            <block type="checkout/onepage_progress"
+                   name="customstep.progress"
+                   template="custom/checkout/onepage/progress/customstep.phtml"/>
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_customstep>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block type="insurance/checkout_onepage_customstep"
+               name="root" output="toHtml"
+               template="custom/checkout/onepage/customstep/info.phtml"/>
+    </checkout_onepage_customstep>
+
+    <checkout_onepage_progress>
+        <reference name='root'>
+            <action method='setTemplate'>
+                <template>custom/checkout/onepage/progress.phtml</template>
+            </action>
+            <block type="checkout/onepage_progress"
+                   name="customstep.progress"
+                   template="custom/checkout/onepage/progress/customstep.phtml"/>
+        </reference>
+    </checkout_onepage_progress>
+
+    <checkout_onepage_progress_customstep>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block type="checkout/onepage_progress"
+               name="root" output="toHtml"
+               template="custom/checkout/onepage/progress/customstep.phtml"/>
+    </checkout_onepage_progress_customstep>
+</layout>

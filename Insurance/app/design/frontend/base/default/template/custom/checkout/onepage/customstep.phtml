@@ -1,0 +1,17 @@
+<form id="customstep-form" action="">
+    <div id="checkout-customstep-load">
+        <!-- Content loaded dynamically -->
+    </div>
+    <div class="buttons-set" id="customstep-buttons-container">
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button" onclick="customstep.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="customstep-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var customstep = new CustomStep('customstep-form','<?php echo $this->getUrl('custom/onepage/saveCustomStep') ?>//');
+    var customstepForm = new VarienForm('customstep-form');
+    //]]>
+</script>
