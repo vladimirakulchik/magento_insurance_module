@@ -2,7 +2,7 @@
     <?php $method = $this->getShippingMethod(); ?>
     <fieldset>
         <ul class="form-list">
-            <li id="customstep">
+            <li id="insurance">
                 <fieldset>
                     <ul>
                         <?php if($this->isShippingMethodEnable($method)): ?>
@@ -11,14 +11,14 @@
                                 <label for="add_insurance">Add insurance</label>
                             </li>
                             <li class="wide">
-                                <label for="customstep">
+                                <label for="insurance">
                                     <?php echo $this->__('Сost of insurance: ') ?>
                                     <span class="price">$<?php echo $this->getInsuranceCost($method); ?></span>
                                 </label>
                             </li>
                         <?php else: ?>
                             <li class="wide">
-                                <label for="customstep">
+                                <label for="insurance">
                                     <?php echo $this->__('Insurance is disabled for this shipping method.') ?>
                                 </label>
                             </li>
@@ -30,7 +30,7 @@
     </fieldset>
 <?php else: ?>
     <li class="wide">
-        <label for="customstep">
+        <label for="insurance">
             <?php echo $this->__('Insurance is not available now.') ?>
         </label>
     </li>

@@ -1,14 +1,14 @@
 <?php
 
-class Itransition_Insurance_Block_Checkout_Onepage_Customstep extends Mage_Checkout_Block_Onepage_Abstract
+class Itransition_Insurance_Block_Checkout_Onepage_Insurance extends Mage_Checkout_Block_Onepage_Abstract
 {
     protected function _construct()
     {
         $this->getCheckout()->setStepData(
-            'customstep',
+            'insurance',
             array(
-                'label'     => Mage::helper('insurance')->__('Insurance'),
-                'is_show'   => $this->isShow()
+                'label' => Mage::helper('insurance')->__('Insurance'),
+                'is_show' => $this->isShow()
             )
         );
 

@@ -4,12 +4,12 @@
             <action method="setTemplate">
                 <template>custom/checkout/onepage.phtml</template>
             </action>
-            <block type="insurance/checkout_onepage_customstep"
-                   name="checkout.onepage.customstep" as="customstep"
-                   template="custom/checkout/onepage/customstep.phtml">
-                <block type="insurance/checkout_onepage_customstep"
-                       name="checkout.onepage.customstep.info" as="customstep.info"
-                       template="custom/checkout/onepage/customstep/info.phtml"/>
+            <block type="insurance/checkout_onepage_insurance"
+                   name="checkout.onepage.insurance" as="insurance"
+                   template="custom/checkout/onepage/insurance.phtml">
+                <block type="insurance/checkout_onepage_insurance"
+                       name="checkout.onepage.insurance.info" as="insurance.info"
+                       template="custom/checkout/onepage/insurance/info.phtml"/>
             </block>
         </reference>
         <reference name='checkout.progress'>
@@ -17,20 +17,20 @@
                 <template>custom/checkout/onepage/progress.phtml</template>
             </action>
             <block type="checkout/onepage_progress"
-                   name="customstep.progress"
-                   template="custom/checkout/onepage/progress/customstep.phtml"/>
+                   name="insurance.progress"
+                   template="custom/checkout/onepage/progress/insurance.phtml"/>
         </reference>
     </checkout_onepage_index>
 
-    <checkout_onepage_customstep>
+    <checkout_onepage_insurance>
         <!-- Mage_Checkout -->
         <remove name="right"/>
         <remove name="left"/>
 
-        <block type="insurance/checkout_onepage_customstep"
+        <block type="insurance/checkout_onepage_insurance"
                name="root" output="toHtml"
-               template="custom/checkout/onepage/customstep/info.phtml"/>
-    </checkout_onepage_customstep>
+               template="custom/checkout/onepage/insurance/info.phtml"/>
+    </checkout_onepage_insurance>
 
     <checkout_onepage_progress>
         <reference name='root'>
@@ -38,18 +38,18 @@
                 <template>custom/checkout/onepage/progress.phtml</template>
             </action>
             <block type="checkout/onepage_progress"
-                   name="customstep.progress"
-                   template="custom/checkout/onepage/progress/customstep.phtml"/>
+                   name="insurance.progress"
+                   template="custom/checkout/onepage/progress/insurance.phtml"/>
         </reference>
     </checkout_onepage_progress>
 
-    <checkout_onepage_progress_customstep>
+    <checkout_onepage_progress_insurance>
         <!-- Mage_Checkout -->
         <remove name="right"/>
         <remove name="left"/>
 
         <block type="checkout/onepage_progress"
                name="root" output="toHtml"
-               template="custom/checkout/onepage/progress/customstep.phtml"/>
-    </checkout_onepage_progress_customstep>
+               template="custom/checkout/onepage/progress/insurance.phtml"/>
+    </checkout_onepage_progress_insurance>
 </layout>

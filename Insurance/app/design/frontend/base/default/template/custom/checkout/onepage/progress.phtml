@@ -22,9 +22,9 @@
                 </div>
             <?php endif; ?>
 
-            <?php if ($this->getCheckout()->getStepData('customstep', 'is_show')): ?>
-                <div id="customstep-progress-opcheckout">
-                    <?php echo $this->getChildHtml('customstep.progress') ?>
+            <?php if ($this->getCheckout()->getStepData('insurance', 'is_show')): ?>
+                <div id="insurance-progress-opcheckout">
+                    <?php echo $this->getChildHtml('insurance.progress') ?>
                 </div>
             <?php endif; ?>
 

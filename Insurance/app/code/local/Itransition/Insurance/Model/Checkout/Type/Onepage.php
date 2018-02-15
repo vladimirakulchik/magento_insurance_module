@@ -4,7 +4,7 @@ class Itransition_Insurance_Model_Checkout_Type_Onepage extends Mage_Checkout_Mo
 {
     const ENABLED = 'enabled';
 
-    public function saveCustomStep($data)
+    public function saveInsurance($data)
     {
         $helper = Mage::helper('insurance');
         $quote = $this->getQuote();
@@ -19,8 +19,8 @@ class Itransition_Insurance_Model_Checkout_Type_Onepage extends Mage_Checkout_Mo
         $quote->save();
 
         $this->getCheckout()
-            ->setStepData('customstep', 'allow', true)
-            ->setStepData('customstep', 'complete', true)
+            ->setStepData('insurance', 'allow', true)
+            ->setStepData('insurance', 'complete', true)
             ->setStepData('payment', 'allow', true);
 
         return array();
