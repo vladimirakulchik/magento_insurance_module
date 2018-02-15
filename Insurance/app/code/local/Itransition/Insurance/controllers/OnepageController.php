@@ -5,14 +5,14 @@ class Itransition_Insurance_OnepageController extends Mage_Checkout_OnepageContr
 {
     const CHECKBOX = 'add_insurance';
 
-    public function saveCustomStepAction(){
+    public function saveInsuranceAction(){
         if ($this->_expireAjax()) {
             return;
         }
 
         if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost(self::CHECKBOX);
-            $result = $this->getOnepage()->saveCustomStep($data);
+            $result = $this->getOnepage()->saveInsurance($data);
 
             if (!isset($result['error'])) {
                 $result['goto_section'] = 'payment';
@@ -44,16 +44,16 @@ class Itransition_Insurance_OnepageController extends Mage_Checkout_OnepageContr
                     'checkout_controller_onepage_save_shipping_method',
                     array(
                         'request' => $this->getRequest(),
-                        'quote'   => $this->getOnepage()->getQuote()
+                        'quote' => $this->getOnepage()->getQuote()
                     )
                 );
                 $this->getOnepage()->getQuote()->collectTotals();
                 $this->_prepareDataJSON($result);
 
-                $result['goto_section'] = 'customstep';
+                $result['goto_section'] = 'insurance';
                 $result['update_section'] = array(
-                    'name' => 'customstep',
-                    'html' => $this->_getCustomstepHtml()
+                    'name' => 'insurance',
+                    'html' => $this->_getInsuranceHtml()
                 );
             }
             $this->getOnepage()->getQuote()->collectTotals()->save();
@@ -61,11 +61,11 @@ class Itransition_Insurance_OnepageController extends Mage_Checkout_OnepageContr
         }
     }
 
-    protected function _getCustomstepHtml()
+    protected function _getInsuranceHtml()
     {
         $layout = $this->getLayout();
         $update = $layout->getUpdate();
-        $update->load('checkout_onepage_customstep');
+        $update->load('checkout_onepage_insurance');
         $layout->generateXml();
         $layout->generateBlocks();
         $output = $layout->getOutput();

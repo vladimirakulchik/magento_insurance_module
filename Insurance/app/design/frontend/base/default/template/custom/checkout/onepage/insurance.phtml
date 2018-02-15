@@ -1,0 +1,17 @@
+<form id="insurance-form" action="">
+    <div id="checkout-insurance-load">
+        <!-- Content loaded dynamically -->
+    </div>
+    <div class="buttons-set" id="insurance-buttons-container">
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button" onclick="insurance.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="insurance-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var insurance = new InsuranceStep('insurance-form','<?php echo $this->getUrl('custom/onepage/saveInsurance') ?>//');
+    var insuranceForm = new VarienForm('insurance-form');
+    //]]>
+</script>

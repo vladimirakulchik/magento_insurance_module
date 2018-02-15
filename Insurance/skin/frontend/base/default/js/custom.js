@@ -1,15 +1,15 @@
 var CustomCheckout = Class.create(Checkout, {
     initialize: function($super, accordion, urls){
         $super(accordion, urls);
-        this.steps = ['login', 'billing', 'shipping', 'shipping_method', 'customstep', 'payment', 'review'];
+        this.steps = ['login', 'billing', 'shipping', 'shipping_method', 'insurance', 'payment', 'review'];
     },
 
-    setCustomStep: function() {
-        this.gotoSection('customstep', true);
+    setInsuranceStep: function() {
+        this.gotoSection('insurance', true);
     }
 });
-var CustomStep = Class.create();
-CustomStep.prototype = {
+var InsuranceStep = Class.create();
+InsuranceStep.prototype = {
     initialize: function(form, saveUrl){
         this.form = form;
 
@@ -31,7 +31,7 @@ CustomStep.prototype = {
         if (checkout.loadWaiting != false) return;
 
         if (this.validate()) {
-            checkout.setLoadWaiting('customstep');
+            checkout.setLoadWaiting('insurance');
             var request = new Ajax.Request(
                 this.saveUrl,
                 {
@@ -67,6 +67,6 @@ CustomStep.prototype = {
             return;
         }
 
-        checkout.setCustomStep();
+        checkout.setInsuranceStep();
     }
 };
